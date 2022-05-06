@@ -35,7 +35,7 @@ setup(name='invokescons',
           'console_scripts': [
               'scons = invokescons.command_line:main',
               ]},
-      packages=[""],
+      packages=["invokescons"],
       install_requires=[
           "scons",
       ],
