@@ -17,15 +17,19 @@ class build_ext(build_ext):
         package_dir = os.path.abspath(build_py.get_package_dir('invokescons'))
         return package_dir
 
-
+descriptor = open("readme.md", "r")
+content = descriptor.read()
+descriptor.close()
 setup(name='invokescons',
-      version='1.0',
+      version='1.1',
       maintainer="Pierce L. Brooks",
       maintainer_email="piercebrks@gmail.com",
       author="Pierce L. Brooks",
       author_email="piercebrks@gmail.com",
       url="https://github.com/PierceLBrooks/invokescons",
       description="SCons - a software construction tool",
+      long_description=content,
+      long_description_content_type="text/markdown",
       classifiers=["Environment :: Console",
                    "License :: OSI Approved :: MIT License",
                    "Intended Audience :: Developers",
