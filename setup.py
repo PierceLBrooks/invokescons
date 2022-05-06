@@ -17,11 +17,15 @@ class build_ext(build_ext):
         package_dir = os.path.abspath(build_py.get_package_dir('invokescons'))
         return package_dir
 
-descriptor = open("readme.md", "r")
-content = descriptor.read()
-descriptor.close()
+content = ""
+try:
+    descriptor = open("readme.md", "r")
+    content = descriptor.read()
+    descriptor.close()
+except:
+    content = ""
 setup(name='invokescons',
-      version='1.1',
+      version='1.2',
       maintainer="Pierce L. Brooks",
       maintainer_email="piercebrks@gmail.com",
       author="Pierce L. Brooks",
