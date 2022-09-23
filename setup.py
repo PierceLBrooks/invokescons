@@ -25,7 +25,7 @@ try:
 except:
     content = ""
 setup(name='invokescons',
-      version='1.4',
+      version='1.5',
       maintainer="Pierce L. Brooks",
       maintainer_email="piercebrks@gmail.com",
       author="Pierce L. Brooks",
