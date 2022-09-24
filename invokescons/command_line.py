@@ -1,3 +1,4 @@
+import os
 import sys
 import shlex
 import subprocess
@@ -21,7 +22,7 @@ def main():
         print(str(command))
         result = None
         try:
-          process = subprocess.Popen(command, env=environment, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+          process = subprocess.Popen(command, env=os.environ(), stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
           while True:
             line = process.stdout.readline()
             if ((len(line) == 0) and not (process.poll() == None)):
