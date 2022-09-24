@@ -1,6 +1,8 @@
 import os
 import sys
 import shlex
+import logging
+import traceback
 import subprocess
 import SCons.Script
 
@@ -22,18 +24,18 @@ def main():
         print(str(command))
         result = None
         try:
-          process = subprocess.Popen(command, env=os.environ(), stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-          while True:
-            line = process.stdout.readline()
-            if ((len(line) == 0) and not (process.poll() == None)):
-              break
-            print(line.decode("UTF-8").strip())
-          output = process.communicate()[0]
-          exit = process.returncode
-          if (exit == 0):
-            result = output
-        except:
-          pass
+            process = subprocess.Popen(command, env=os.environ.copy(), stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+            while True:
+                line = process.stdout.readline()
+                if ((len(line) == 0) and not (process.poll() == None)):
+                    break
+                print(line.decode("UTF-8").strip())
+            output = process.communicate()[0]
+            exit = process.returncode
+            if (exit == 0):
+                result = output
+        except Exception as exception:
+            logging.error(traceback.format_exc())
         print(str(result))
     else:
         SCons.Script.main()
